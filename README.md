@@ -1,6 +1,6 @@
 # Backend Express + Node.JS
 
-## Instalation
+## Install
 
 ```shell
 npm install
