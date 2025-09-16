@@ -44,3 +44,16 @@ export async function searchProducts(req, res) {
   );
   res.json(productFiltred);
 }
+
+// Funcion para crear un producto
+export async function createProduct(req, res) {
+  const { name, precio, cantidad, categories } = req.body;
+
+  const product = await Model.createProduct({
+    name,
+    precio,
+    cantidad,
+    categories,
+  });
+  res.status(201).json(product);
+}
