@@ -1,13 +1,13 @@
 const products = [
   {
     name: "Pan",
-    categoria: ["alimento", "harinas"],
+    categories: ["alimento", "harinas"],
     precio: 3000,
     cantidad: "2kg",
   },
   {
     name: "Queso",
-    categoria: ["alimento", "lacteo"],
+    categories: ["alimento", "lacteo"],
     precio: 5000,
     cantidad: "500g",
   },
@@ -18,7 +18,7 @@ export function getAllProducts(req, res) {
   res.json(products);
 }
 
-// Funcion para buscar productos en la base de datos
+// Funcion para buscar productos por su nombre
 export function searchProducts(req, res) {
   const { name } = req.query;
 
@@ -29,10 +29,19 @@ export function searchProducts(req, res) {
   const productFiltred = products.filter((item) =>
     item.name.toLowerCase().includes(name.toLowerCase())
   );
-
-  if (productFiltred.length == 0) {
-    return res.status(404).json({ error: "no se encontraron productos" });
-  }
-
   res.json(productFiltred);
+}
+
+// Funcion para buscar productos por categoria
+export function filtredProducts(req, res) {
+  const { category } = req.query;
+
+  if (category) {
+    const productsFiltred = products.filter((item) =>
+      item.categories.includes(category)
+    );
+
+    return res.json(productsFiltred);
+  }
+  res.json({ products });
 }
