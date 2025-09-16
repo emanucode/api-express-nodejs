@@ -3,6 +3,11 @@
 ## Instalacion
 
 1. Clona el repositorio
+
+```shell
+git clone https://github.com/emanucode/api-express-nodejs.git
+```
+
 2. Instalar las dependencias:
 
 ```shell
